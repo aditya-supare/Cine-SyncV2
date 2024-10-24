@@ -3,7 +3,7 @@ import { SignedIn, SignedOut, SignIn, SignInButton, SignOutButton, UserButton } 
 export function TopNav(){
     return(
       <nav className="flex w-full items-center justify-between p-4 text-xl font-semibold">
-        <div>CineSync</div>
+        <div className="text-2xl text-zinc-200">CineSync</div>
 
         <div>
             <SignedOut>

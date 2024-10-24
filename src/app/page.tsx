@@ -1,20 +1,19 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
-import Link from "next/link";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import { db } from "~/server/db";
 
-export default async function HomePage() {
 
+export default async function HomePage() {
   const posts = await db.query.posts.findMany();
-  console.log(posts)
+  console.log(posts);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center text-white">
       <SignedOut>
-        <div className="w-full h-full text-2xl text-center">Please Sign In</div>
+        <RedirectToSignIn />
       </SignedOut>
       <SignedIn>
-      <div>hello cine-sync</div>
-     </SignedIn>
+        <div>hello cine-sync</div>
+      </SignedIn>
     </main>
   );
 }

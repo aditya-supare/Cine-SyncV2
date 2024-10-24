@@ -1,9 +1,11 @@
 import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-
 import { TopNav } from "./_components/topnav";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+
+import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
+import { AppSidebar } from "~/components/app-sidebar"
 
 export const metadata: Metadata = {
   title: "CineSync",
@@ -18,8 +20,12 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-      <TopNav/>
-        {children}</body>
+        <SidebarProvider>
+          <AppSidebar/>
+      <SidebarTrigger/>
+        {children}
+        </SidebarProvider>
+        </body>
     </html>
     </ClerkProvider>
   );
